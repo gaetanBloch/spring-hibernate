@@ -1,8 +1,10 @@
 package com.gbloch.model;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * <br>
@@ -14,13 +16,15 @@ import javax.persistence.*;
  */
 @Entity
 @Getter
-public final class Note {
+@Setter
+public final class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String notes;
+    private String description;
+    private BigDecimal amount;
 
-    @OneToOne
+    @ManyToOne
     private Recipe recipe;
 }

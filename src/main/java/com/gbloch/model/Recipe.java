@@ -1,8 +1,10 @@
 package com.gbloch.model;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * <br>
@@ -14,7 +16,8 @@ import javax.persistence.*;
  */
 @Entity
 @Getter
-final class Recipe {
+@Setter
+public final class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,4 +34,6 @@ final class Recipe {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Note note;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
 }
