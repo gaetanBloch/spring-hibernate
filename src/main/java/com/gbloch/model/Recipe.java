@@ -2,6 +2,7 @@ package com.gbloch.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.util.DirectFieldAccessFallbackBeanWrapper;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -31,6 +32,8 @@ public final class Recipe {
     private String directions;
     @Lob
     private Byte[] image;
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Note note;
